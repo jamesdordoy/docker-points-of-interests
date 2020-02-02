@@ -13,8 +13,8 @@
 function Map (mapId) {
 
 	/**
-    * @var Object Leaflet Map
-    */
+     * @var Object Leaflet Map
+     */
 	this.map = new L.Map(mapId);
 
 	//Set up Leaflet MapTile Layer 
@@ -27,9 +27,9 @@ function Map (mapId) {
 		}
 	).addTo(this.map);
 
-  /**
-    * @var string ID of Map
-    */
+  	/**
+     * @var string ID of Map
+     */
 	this.mapId = mapId;
 }
 

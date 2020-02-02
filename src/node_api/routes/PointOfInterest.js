@@ -23,7 +23,6 @@ router.post('/PointOfInterest', function(req, res, next){
 		var plain_auth = buf.toString();        // read it back out as a string
 
 		// At this point plain_auth = "username:password"
-
 		var creds = plain_auth.split(':');      // split on a ':'
 		var username = creds[0];
 		var password = creds[1];
@@ -76,62 +75,51 @@ router.post('/PointOfInterest', function(req, res, next){
 //Get Points of Interest
 router.get('/PointOfInterest', function(req, res, next){
 
-        //Search By Type & Region
-        if(req.query.region != undefined && req.query.type != undefined){
+	//Search By Type & Region
+	if(req.query.region != undefined && req.query.type != undefined){
 
-                let type = req.query.type;
-                let region = req.query.region;
+		let type = req.query.type;
+		let region = req.query.region;
 
-                PoiApp.searchByTypeAndRegion(type, region, function(results){
+		PoiApp.searchByTypeAndRegion(type, region, function(results){
+			//If Results are not undefined and are not blank
+			if (typeof results !== 'undefined' && results.length > 0){
+				//Write JSON
+				res.json(results);
 
-                        //If Results are not undefined and are not blank
-                        if (typeof results !== 'undefined' && results.length > 0){
+				console.log('Type Search For: ' + type + ' Region Search For: '+ region);
+			} else
+				res.status(404).send('Not found');
+		});
 
-                                //Write JSON
-                                res.json(results);
+	//Search By Region
+	} else if (req.query.region != undefined) {
 
-                                console.log('Type Search For: ' + type + ' Region Search For: '+ region);
-                        }else
-                                res.status(404).send('Not found');
-                });
+		let region = req.query.region;
 
-        //Search By Region
-        }else if(req.query.region != undefined){
+		PoiApp.searchByRegion(region, function(results){
+			if (typeof results !== 'undefined' && results.length > 0){
+				res.json(results);
+				console.log('Region Search For: ' + region);
+			} else
+				res.status(404).send('Not found');
+		});
+		//Search By Type
+	} else if(req.query.type != undefined) {
 
-                let region = req.query.region;
-
-                PoiApp.searchByRegion(region, function(results){
-
-                        if (typeof results !== 'undefined' && results.length > 0){
-
-                                res.json(results);
-
-                                console.log('Region Search For: ' + region);
-                        }else
-                                res.status(404).send('Not found');
-                });
-
-        //Search By Type
-        } else if(req.query.type != undefined) {
-
-                let type = req.query.type;
-
-                PoiApp.searchByType(type, function(results){
-                        //If Results
-                        if (typeof results !== 'undefined' && results.length > 0){
-
-                                res.json(results);
-
-                                console.log('Type Search For: ' + type);
-
-                        }else
-                                res.status(404).send('Not found');
-                });
-
-  //Else No Params Or Unexpected Params
-        } else {
-                res.status(400).send('Unexpected Parameters or None');
-        }
+		let type = req.query.type;
+		PoiApp.searchByType(type, function(results){
+			//If Results
+			if (typeof results !== 'undefined' && results.length > 0){
+				res.json(results);
+				console.log('Type Search For: ' + type);
+			} else
+				res.status(404).send('Not found');
+		});
+  	//Else No Params Or Unexpected Params
+	} else {
+		res.status(400).send('Unexpected Parameters or None');
+	}
 });
 
 //Export Router To Main APP
