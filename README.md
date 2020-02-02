@@ -1,12 +1,20 @@
-Create volume folders
+# Points of Interest using Docker
 
-mkdir mysql && mkdir mongo
+> Legacy Web app built with PHP, NodeJS, Express and Angular Containerised.
 
-View Native JS Client http://localhost:8081/js_client/
-View AngularJS Client http://localhost:8081/angular_client/
+## Create volume folders
+
+`$ mkdir mysql && mkdir mongo`
+
+## View API & Clients
+
+View Native JS Client: 
+[http://localhost:8081/js_client/](http://localhost:8081/js_client/)
+
+View AngularJS Client: [http://localhost:8081/angular_client/](http://localhost:8081/angular_client/)
+
+Node JS Express API Route: [http://localhost:8011/](http://localhost:8011/)
 
 PHP API Routes:
-http://localhost:8081/php_api/PointOfInterest.php - Points of Interests
 
-Node JS Express API Route:
-http://localhost:8011/
+- [Points of Interests](http://localhost:8081/php_api/PointOfInterest.php)
