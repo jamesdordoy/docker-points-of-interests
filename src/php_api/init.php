@@ -8,7 +8,7 @@
   **/
 
 	//Docker Container Connection
-	define('HOST_NAME','mysql:host=192.168.240.3');
+	define('HOST_NAME','mysql:host=mysql');
 	define('HOST_USERNAME','homestead');
 	define('HOST_PWD','secret');
 	define('HOST_DBNAME','dbname=points_of_interest');

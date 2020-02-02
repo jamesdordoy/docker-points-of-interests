@@ -36,7 +36,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=homestead
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
-      - ./seed_mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./seeds/mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ./mongo:/data/db
     ports:
       - '27017-27019:27017-27019'
@@ -52,6 +52,8 @@ services:
       test: nc -z localhost 80
     volumes: 
       - ./src:/var/www/html:cached
+    environment: 
+      ENV_VAR: mysql
     ports:
       - "9000:9000"
 
@@ -65,9 +67,9 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
       ##Run seeds
-      - ./sql/poi_users.sql:/docker-entrypoint-initdb.d/1_poi_users.sql
-      - ./sql/pointsofinterest.sql:/docker-entrypoint-initdb.d/2_points_of_interests.sql
-      - ./sql/poi_reviews.sql:/docker-entrypoint-initdb.d/3_poi_reviews.sql
+      - ./seeds/sql/poi_users.sql:/docker-entrypoint-initdb.d/1_poi_users.sql
+      - ./seeds/sql/pointsofinterest.sql:/docker-entrypoint-initdb.d/2_points_of_interests.sql
+      - ./seeds/sql/poi_reviews.sql:/docker-entrypoint-initdb.d/3_poi_reviews.sql
     environment: 
       MYSQL_DATABASE: points_of_interest
       MYSQL_USER: homestead
