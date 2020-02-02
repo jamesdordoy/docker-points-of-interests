@@ -29,7 +29,7 @@ services:
       - "8011:8011"
     build:
       context: .
-      dockerfile: DockerFile.node
+      dockerfile: DockerFile.nodeserver
     depends_on:
       - mongo
   
@@ -54,7 +54,7 @@ services:
       - point-of-interests
     build:
       context: .
-      dockerfile: DockerFile
+      dockerfile: DockerFile.phpserver
     container_name: php
     healthcheck:
       test: nc -z localhost 80
