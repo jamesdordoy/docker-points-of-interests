@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Middleware (Set CORS Header for edward) http://stackoverflow.com/questions/7067966/how-to-allow-cors
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://edward");
+  res.header("Access-Control-Allow-Origin", "nginx");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });

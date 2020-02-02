@@ -1,41 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 3.5.6
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Feb 02, 2017 at 09:46 PM
--- Server version: 5.0.96
--- PHP Version: 5.2.14
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `jdordoy`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `poi_reviews`
---
-
 CREATE TABLE IF NOT EXISTS `poi_reviews` (
   `id` int(11) NOT NULL auto_increment,
   `poi_id` int(11) default NULL,
   `review` text,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=104 ;
-
---
--- Dumping data for table `poi_reviews`
---
 
 INSERT INTO `poi_reviews` (`id`, `poi_id`, `review`) VALUES
 (87, 740, 'a review\r\n'),

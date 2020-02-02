@@ -15,7 +15,7 @@ PointOfInterestController.controller('MainController', function MyController($sc
 	//Scope Method (Search API By Type)
 	$scope.searchByType = function () {
 		//Send HTTP GET Request
-		$http.get('http://193.63.200.53:8011/PointOfInterest?type=' + $scope.ang_type)
+		$http.get('http://localhost:8081/php_api/PointOfInterest.php?type=' + $scope.ang_type)
 		.success(function(data) {
 			//Add Data to Scope So It Can Be Manipulated in DOM
 			$scope.pois = data;
@@ -28,7 +28,7 @@ PointOfInterestController.controller('MainController', function MyController($sc
 
 	$scope.searchByRegion = function () {
 		//Send HTTP GET Request
-		$http.get('http://193.63.200.53:8011/PointOfInterest?region=' + $scope.ang_region)
+		$http.get('http://localhost:8081/php_api/PointOfInterest.php?region=' + $scope.ang_region)
 		.success(function(data, status) {
 			//Get Map Object From RootScope
 			var map = $rootScope.map;

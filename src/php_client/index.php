@@ -1,5 +1,7 @@
 <?php
 
+	ini_set("display_errors", true);
+
 	//If A Search Type Isset
 	if(isset($_GET['type'])){
 
@@ -16,18 +18,19 @@
 			
 			//Set All HTTP Options At Once In Array (Specify: URL, HEADER, RETURNTRANSFER)
 			$options = array(
-				CURLOPT_URL => $config['local']['routes']['GET_points_of_interest'] . "?region=Hampshire&type=". $type,
+				CURLOPT_URL => $config['local']['routes']['GET_points_of_interest'] . "172.28.0.5?region=Hampshire&type=". $type,
 				CURLOPT_RETURNTRANSFER => 1,
-				CURLOPT_HEADER => 0
 			);
-
 		
 			//Set Options
 			curl_setopt_array($curlConn, $options);
 			
-			//Get JSON Response String
 			$json = curl_exec($curlConn);
-	
+
+			if ($json === false) {
+				throw new Exception(curl_error($curlConn), curl_errno($curlConn));
+			}
+
 			//Convert String to Assoc Array
 			$data = json_decode($json, 1);
 

@@ -97,7 +97,7 @@ Map.prototype.addPointOfInterest = function (name, type, country, region, lat, l
     var json = JSON.stringify(data);
 
     //Open & Send HTTP Request
-    ajax.open("POST", "http://193.63.200.53:8011/PointOfInterest");
+    ajax.open("POST", "http://localhost:8011/");
 
     //Set Auth Header For Service To Read
     ajax.setRequestHeader("Authorization","Basic " + btoa(username+":"+pass));

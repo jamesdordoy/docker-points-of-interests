@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.5.6
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Feb 02, 2017 at 09:53 PM
--- Server version: 5.0.96
--- PHP Version: 5.2.14
-
-
--- Database: `jdordoy`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pointsofinterest`
---
 
 CREATE TABLE IF NOT EXISTS `pointsofinterest` (
   `ID` int(11) NOT NULL auto_increment,
@@ -28,10 +10,6 @@ CREATE TABLE IF NOT EXISTS `pointsofinterest` (
   `description` text,
   PRIMARY KEY  (`ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1132 ;
-
---
--- Dumping data for table `pointsofinterest`
---
 
 INSERT INTO `pointsofinterest` (`ID`, `name`, `type`, `country`, `region`, `lon`, `lat`, `description`) VALUES
 (1014, 'The Crown', 'pub', 'England', 'Hampshire', -1.4011, 50.9319, 'nice pub'),

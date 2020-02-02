@@ -12,8 +12,6 @@ if( isset($_POST['review']) && isset($_GET['id'])  ){
 		//Poi Creditials!!
 		$username = "visithampshire";
 		$password = "vh123";
-		
-		
 
 		//Get ID Value From Address Bar & Review Post Value From Form
 		$review = htmlentities($_POST['review']);
