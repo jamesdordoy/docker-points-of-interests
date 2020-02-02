@@ -21,9 +21,4 @@ INSERT INTO `poi_reviews` (`id`, `poi_id`, `review`) VALUES
 (99, 2, 'boi'),
 (100, 740, 'a nice pub to be fair'),
 (101, 739, 'a nice pub'),
-(102, 739, 'a nice place to have a few'),
-(103, 121212, 'nice');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(102, 739, 'a nice place to have a few');
