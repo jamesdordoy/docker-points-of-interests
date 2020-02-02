@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Points of Interest API</title>
+
+	<style>
+
+	@import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
+	@import url('https://fonts.googleapis.com/css?family=Amiko');
+
+*{ margin:0; padding:0; font-family: 'Amiko', sans-serif;}
+header{ background:#8f8d8e; color:#fff; margin-bottom: 10px; }
+main{ background:#fff; width:98%; padding:0 1%; }
+p{ margin: 10px 0; }
+ul li{ margin-left:10px; }
+form{ border: 1px solid #ccc; }
+hr{ margin-bottom: 30px; }
+
+table{
+	width:100%;
+	border:1px solid #000;
+	border-collapse:collapse;
+	border-spacing: 0;
+	font-family: 'Amiko', sans-serif;
+	margin-bottom:10px;
+}
+
+table tr th{
+	text-align:left;
+	padding:15px 5px;
+	font-size:1.2em;
+	color:#fff;
+	background: #8f8d8e;
+}
+
+table tr:nth-of-type(odd){ background-color: #ccc; color:#000; }
+table tr td{ padding:10px 5px; }
+table tr td:last-child{
+	width:300px;
+}
+
+h1{ padding:1%; font-family: 'Work Sans', sans-serif;}
+
+
+form{
+	width:98%;
+	padding:1%;
+}
+
+textarea{
+	width:100%;
+}
+input{
+width:100%;
+}
+
+.clients{display: flex;}
+
+.clients li{ flex:1; text-align: center; margin: 0; padding:20px; list-style: none;}
+.services{display: flex;}
+
+.services li{ flex:1; text-align: center; margin: 0; padding:20px; list-style: none;}
+		
+
+	</style>
+</head>
+<body>
+<header>
+	<h1>Points of Interest</h1>
+</header>
+
+<main>
+
+<h2>Scenario</h2>
+<h3 style="color:#ff0000; text-decoration: underline;">Please Read Until End Of Important Information</h3>
+<h4 style="color:#ff0000; text-decoration: underline;">Test Internally</h4>
+
+<p>PointsOfInterest is a site which allows users to look up information on places they might want to visit whilst on holiday, such as world cities, historical sites, countryside areas, or recommended restaurants or pubs/bars. At the moment the site is an ordinary database-driven website which allows users to view information on a particular place. Each point of interest (POI) has a corresponding description.</p>
+
+<p>However the site still believes it can go further, and would like to expand its system to take advantage of distributed and mobile web technologies and the collaborative nature of the contemporary Web. In order to expand the ways in which clients can interact with the system, they wish to make the system functionality available as a JSON or XML based web service. They would also like users to be able to contribute points of interest themselves, together with a description.</p>
+
+<table>
+	<tr>
+		<th>Task Number</th>
+		<th>Task Title</th>
+		<th>Task Link</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>The web service should include a feature to allow clients to look up all POIs in a given region, and all POIs of a given type, and both.</td>
+		<td>
+			<p>GET Request to - <a href="/poi/php_api/PointOfInterest.php?type=pub">PointOfInterest.php?type=pub</a></p>
+		</td>
+		<td>
+			<p>Parameters + Mix &amp; Matching</p>
+			<ul>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?id=3">id</a></li>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?name=Fareham">name</a></li>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?type=town">type</a></li>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?country=uk">country</a></li>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?region=hampshire">region</a></li>
+				<li><a target="_blank" href="/poi/php_api/PointOfInterest.php?description=A very interesting place">description</a></li>
+			</ul>
+			
+			<p>HTTP Response Codes</p>
+			<ul>
+				<li>404 Not Found</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>The web service should include a feature to allow clients to add a POI.</td>
+		<td>
+			<p>POST Request to - <a href="/poi/php_api/PointOfInterest.php">PointOfInterest.php</a></p>
+			<p>Parameters</p>
+			<ul>
+				<li>(String) name</li>
+				<li>(String) type</li>
+				<li>(String) country</li>
+				<li>(String) region</li>
+				<li>(float) lat</li>
+				<li>(float) lon</li>
+				<li>(String) description</li>
+				<li>+ Basic Auth</li>
+			</ul>
+		</td>
+		<td>
+			<p>HTTP Response Codes</p>
+			<ul>
+				<li>401 Unauthorized</li>
+				<li>403 Forbidden</li>
+				<li>400 Bad Request</li>
+			</ul>
+			<p><a href="assignment/phprestapi/test%20forms/addpoi.html">link to test form here</a></p>
+		</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>The web service should include a feature to allow clients to review a POI.</td>
+		<td>
+			<p>POST Request to - <a href="assignment/phprestapi/PointOfInterestReview.php">PointOfInterestReview.php</a></p>
+			<p>Parameters</p>
+			<ul>
+				<li>(String) review</li>
+				<li>(int) id - relating to poi</li>
+				<li>+ Basic Auth</li>
+			</ul>
+		</td>
+		<td>
+			<p>HTTP Response Codes</p>
+			<ul>
+				<li>401 Unauthorized</li>
+				<li>403 Forbidden</li>
+				<li>400 Bad Request</li>
+			</ul>
+			<p><a href="assignment/phprestapi/test%20forms/addpoireview.html">link to test form here</a></p>
+		</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>PointsOfInterest should have an AJAX front end which connects to the web service, and in doing so, allows users to look up all POIs of a given type. The POI's name, type, country, region, latitude and longitude should be shown but NOT the description.</td>
+		<td>
+			<a href="assignment/ajaxclient/">AJAX Client</a>
+		</td>
+		<td>
+			<p>Code</p>
+			<ul>
+				<li><a href="assignment/ajaxclient/js/PointsOfInterestApp.js">Point of Interest App Object</a></li>
+				<li><a href="assignment/ajaxclient/js/main.js">Main JS File</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>A third-party website, VisitHampshire, is a tourist information site for the county of Hampshire. At the moment this site uses its own database to store POIs within Hampshire; however, it wishes to use the PointsOfInterest web service instead. It should allow its own users to look up POIs of a given type, making use of the web service.</td>
+		<td>
+			<a href="/poi/php_client/index.php" target="_blank">Visit Hampshire Client</a>
+		</td>
+		<td>
+		<p>Code</p>
+			<ul>
+				<li><a href="/poi/php_client/index.php" target="_blank">Visit Hampshire Client</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>PointsOfInterest's own site (not VisitHampshire!) should include web maps (e.g. Leaflet, Google Maps or similar), and on a smartphone with GPS enabled, the site should display a map of the user’s local area. In addition, on PointsOfInterest's own site, the user should be able to enter a region (e.g. Hampshire, Normandy, California, etc) in the user interface, and then all POIs in that region will be shown on the map.</td>
+		<td>
+			<a href="/poi/ajax_client/index.html">AJAX Client</a>
+		</td>
+		<td>
+			<p>Code</p>
+			<ul>
+				<li><a href="/poi/ajax_client/js/Map.js">Points of Interest Map Object</a></li>
+				<li><a href="/poi/ajax_client/js/PointsOfInterestApp.js">Points of Interest App Object</a></li>
+				<li><a href="/poi/ajax_client/js/main.js">Main JS File</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>7</td>
+		<td>VisitHampshire should allow a user to review a POI, by interacting with the web service. This requirement should be linked with requirement 5.</td>
+		<td>
+			<a href="http://edward/~jdordoy/assignment/phpclient/index.php">Visit Hampshire Client</a>
+		</td>
+		<td>
+			<p>Code</p>
+			<ul>
+				<li><a href="http://edward/~jdordoy/assignment/phpclient/index.php">Visit Hampshire Client</a></li>
+				<li><a href="http://edward/~jdordoy/assignment/phpclient/review.php">Review.php</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>A user should be able to add a point of interest by clicking on the map. The user must be able to input the details of the point of interest. The point of interest must be saved in the database by interacting with the appropriate web service, and a marker displayed as soon as the web service sends a response back to the client (and not before).</td>
+		<td>
+			<a href="assignment/ajaxclient/index.html">AJAX Client</a>
+		</td>
+		<td>
+			<p>Code</p>
+			<ul>
+				<li><a href="assignment/ajaxclient/js/PointsOfInterestApp.js">Points of Interest App Object</a></li>
+				<li><a href="assignment/ajaxclient/js/Map.js">POI Leaflet Map Object</a></li>
+				<li><a href="assignment/ajaxclient/js/AddPoiDialog.js">Add POI Dialog JQuery Object</a></li>
+				<li><a href="assignment/ajaxclient/js/main.js">Main JS File</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>9</td>
+		<td>As the user moves the map, POIs in the currently-visible area should be shown (you will need a new web service for this). Details of the POI (including the description) should appear when the user clicks a marker.</td>
+		<td></td>
+		<td>Not complete</td>
+	</tr>
+	<tr>
+		<td>10</td>
+		<td>The AJAX front end should also allow a user to review a point of interest, by interacting with the web service. This must be done fully with JavaScript and AJAX; the user must not be directed to a new page. Ideally, the marker popups should be linked to the review facility. NOTE THAT THIS CORRESPONDS TO TASK 8 IN THE REPORT.</td>
+		<td>
+		</td>
+		<td>Not complete</td>
+	</tr>
+	<tr>
+		<td>11</td>
+		<td>Implement your web services using node-js and MongoDB. Ensure that your AJAX front-end fully communicates with your node-js and MongoDB back-end. Ensure you fully handle errors both client-side and server-side.</td>
+		<td>
+			<ul>
+				<li><a href="http://193.63.200.53:8011/PointOfInterest">Node Server</a></li>
+				<li><a href="http://edward/~jdordoy/assignment/nodeclient">Angular Client</a></li>
+			</ul>
+		</td>
+		<td>
+			<p>NodeJS GET HTTP Response Codes (Search By Type, Region, Type &amp; Region)</p>
+			<ul>
+				<li>404 Not Found</li>
+				<li>400 Bad Request</li>
+			</ul>
+			
+			<p>NodeJS POST HTTP Response Codes</p>
+			<ul>
+				<li>401 Unauthorized</li>
+				<li>403 Forbidden</li>
+				<li>400 Bad Request</li>
+			</ul>
+			<p>Code - Client</p>
+			<ul>
+				<li><a href="http://edward/~jdordoy/assignment/nodeclient/">index.html</a></li>
+				<li>JS
+					<ul>
+						<li><a href="http://edward/~jdordoy/assignemnt/nodeclient/js">Main Angular JS App File</a></li>
+						<li><a href="http://edward/~jdordoy/assignemnt/nodeclient/js">Angular Router</a></li>
+						<li><a href="http://edward/~jdordoy/assignemnt/nodeclient/js">Angular Controller</a></li>
+						<li><a href="http://edward/~jdordoy/assignemnt/nodeclient/js">Map Object</a></li>
+					</ul>
+				</li>
+			</ul>
+			<p>Code - Server</p>
+			<ul>
+				<li>Express JS
+					<ul>
+						<li><a href="">index.js</a></li>
+						<li><a href="">MongoUtil.js</a></li>
+						<li><a href="">PointsOfInterestAPI.js</a></li>
+						<li>Routes
+							<ul>
+								<li><a href="">PointOfInterest.js</a></li>
+								<li><a href="">PointOfInterestReview.js</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p style="color: #ff0000;">To start Server Logon to Node011. THEN ENTER EXPRESS DIRECTORY USING cd express. this is where the API is housed. To start the server type node index.js</p>
+		</td>
+	</tr>
+</table>
+
+<h2>Clients &amp; Services</h2>
+
+<ul class="clients">
+	<li style="background: #ffff00;">
+		<h3>AJAX</h3>
+		<a href="http://edward2.solent.ac.uk/~jdordoy/assignment/ajaxclient/" target="_blank">Javascript Client</a>
+	</li>
+	<li style="background: #E6E6FA;">
+		<h3>3rd Party Client (VisitHampshire)</h3>
+		<a href="http://edward/~jdordoy/assignment/phpclient" target="_blank">PHP VisitHampshire</a>
+	</li>
+	<li style="background: #00FF00;">
+		<h3>NodeJS Client</h3>
+		<a href="http://edward/~jdordoy/assignment/nodeclient" target="_blank">Angular (M.E.A.N.) Client</a>
+	</li>
+</ul>
+<ul class="services">
+	<li style="background: #00FF00;">
+		<h3>Node JS</h3>
+		<a href="http://193.63.200.53:8011/PointOfInterest" target="_blank">Node API</a>
+	</li>
+	<li style="background: #E6E6FA;">
+		<h3>PHP</h3>
+		<a href="http://edward2.solent.ac.uk/~jdordoy/assignment/phprestapi/" target="_blank">PHP API</a>
+	</li>
+</ul>
+<br>
+
+<h3>NodeJS</h3>
+
+<p>The Node Services are Handled Like a REST API - /PointOfInterest Route Supported GET/POST</p>
+
+<h4>Starting the Node server</h4>
+<p>(Ensure MongoDB Server Is Running Prior) Run 'node index.js' (index.js main app file) From Express Directory on Putty CLI. The Express Directory Is Accessable From The Root folder. Server Will Run On Port 8011</p>
+
+
+
+<table>
+	<tr>
+		<th>Service Name</th>
+		<th>Service Parameters</th>
+		<th>Service URL</th>
+		<th>Service Type</th>
+	</tr>
+	<tr>
+		<td>PointOfInterest</td>
+		<td>type, region</td>
+		<td><a href="api/pointsOfInterest">/PointOfInterest</a></td>
+		<td>GET</td>
+	</tr>
+	<tr>
+		<td>PointOfInterest</td>
+		<td>name, type, country, region, lon, lat, description, Basic Auth</td>
+		<td><a href="api/addpoi.php">/PointOfInterest</a></td>
+		<td>POST</td>
+	</tr>
+	<tr>
+		<td>PointOfInterestReview</td>
+		<td>id, review, Basic Auth</td>
+		<td><a href="api/addpoireview.php">/PointOfInterestReview</a></td>
+		<td>POST</td>
+	</tr>
+</table>
+
+<p style="color:#ff0000;">End of important info</p>
+
+<hr><br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+<h2>Additonal Information</h2>
+<p>The M.E.A.N. Stack stands for MongoDB, Express, AngularJS and NodeJS. This is a popular alternative to developing web applications to the LAMP stack based on Linux, Apatche, MySQL and PHP.</p>
+<h2>MYSQL Relational Database Tables</h2>
+<h3>pointsofinterest</h3>
+<table>
+	<tr>
+		<th>Column Name</th>
+		<th>Colmun Type</th>
+		<th>Role</th>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>int, primary key</td>
+		<td>An auto-incrementing index uniquely identifying each record</td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>Varchar</td>
+		<td>The Point of Interest Name</td>
+	</tr>
+	<tr>
+		<td>Type</td>
+		<td>Varchar</td>
+		<td>The POI type, e.g. city, historical building, restaurant, hotel, etc</td>
+	</tr>
+	<tr>
+		<td>Country</td>
+		<td>Varchar</td>
+		<td>The country that the POI can be found in</td>
+	</tr>
+	<tr>
+		<td>Region</td>
+		<td>Varchar</td>
+		<td>The region that the POI can be found in, e.g. Hampshire, Normandy, Bavaria, California, etc</td>
+	</tr>
+	<tr>
+		<td>lon</td>
+		<td>Float</td>
+		<td>The longitude of the POI</td>
+	</tr>
+	<tr>
+		<td>lat</td>
+		<td>Float</td>
+		<td>the latitude of the POI</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>Text</td>
+		<td>the Point of Interest description</td>
+	</tr>
+</table>
+
+<h3>poi_reviews</h3>
+<table>
+	<tr>
+		<th>Column Name</th>
+		<th>Colmun Type</th>
+		<th>Role</th>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>int, primary key</td>
+		<td>An auto-incrementing index uniquely identifying each record</td>
+	</tr>
+	<tr>
+		<td>poi_id</td>
+		<td>int</td>
+		<td>The ID of the point of interest that this review relates to (from the pointsofinterest table)</td>
+	</tr>
+	<tr>
+		<td>review</td>
+		<td>Text</td>
+		<td>The review itself</td>
+	</tr>
+</table>
+
+<h3>poi_users</h3>
+<table>
+	<tr>
+		<th>Column Name</th>
+		<th>Colmun Type</th>
+		<th>Role</th>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>int, primary key</td>
+		<td>An auto-incrementing index uniquely identifying each record</td>
+	</tr>
+
+	<tr>
+		<td>username</td>
+		<td>Varchar</td>
+		<td>The Username</td>
+	</tr>
+	<tr>
+		<td>password</td>
+		<td>Varchar</td>
+		<td>The Password</td>
+	</tr>
+	<tr>
+		<td>isadmin</td>
+		<td>tinyint</td>
+		<td>are they an administrator? (0=no, 1=yes)</td>
+	</tr>
+</table>
+
+<p>End of Tables</p>
+<hr><br>
+
+<h2>MongoDB Collections</h2>
+
+<table>
+	<tr>
+		<th>Collection Name</th>
+		<th>Structure</th>
+	</tr>
+	<tr>
+		<td>pointsofinterest</td>
+		<td>{_id: _id, id: id, name: 'name', type: 'type', country: 'country', region: 'region', lat: lat, lon: lon, descrption: 'description'}</td>
+	</tr>
+	<tr>
+		<td>poi_users</td>
+		<td>{id: id, username: 'username', password: 'password', isadmin: isadmin}</td>
+	</tr>
+	<tr>
+		<td>poi_review</td>
+		<td>{id: id, review: 'review', poiId: poiId}</td>
+	</tr>
+</main>
+</body>
+</html>

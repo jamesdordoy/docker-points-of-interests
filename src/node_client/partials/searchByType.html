@@ -1,0 +1,20 @@
+<div ng-controller="MainController">
+	<form class="searchForm" ng-submit="searchByType()">
+		<input class="searchBox typeTxt" ng-model="ang_type" type="text" placeholder="Search by Type:" name="search"/>
+		<button class="searchBtn typeBtn"><i class='fa fa-search fa-2x' aria-hidden='true'></i></button>
+	</form>
+
+	<div class="searchResponseWrapper">
+		<ul class="typeResponse">
+			<li ng-repeat="poi in pois">
+				<p>Name: {{ poi.name }}</p>
+				<p>Type: {{ poi.type }}</p>
+				<p>Country: {{ poi.country }}</p>
+				<p>Region: {{ poi.region }}</p>
+				<p>Latitude: {{ poi.lat }}</p>
+				<p>Longitude: {{ poi.lon }}</p>
+				<i class="fa fa-map-marker fa-5x" aria-hidden='true'></i>
+			</li>
+		</ul>
+	</div>
+</div>

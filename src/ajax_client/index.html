@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Broswer Meta Data (inc viewport scale tag) -->
+		<meta charset="UTF-8">
+		<meta name="author" content="James Dordoy">
+		<meta name="keywords" content="WAD">
+		<meta name="description" content="James Ryan Dordoy - Southampton Solent University WAD">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Page Title (Shown In Browser) -->
+		<title>Points of Interest</title>
+
+		<!-- Leflet CSS CDN Include -->
+		<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
+
+		<!-- JQuery UI CSS Smoothness Include -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+		<!-- Main CSS File Include -->
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- FONTAWESOME INCLUDE -->
+		<link rel="stylesheet" href="css/fontAwesome/css/font-awesome.min.css">
+	</head>
+	<body>
+		<!-- ================== HIDDEN-SIDE-NAV ================== -->
+		<div class="side-nav">
+
+			<div class="side-nav-header">
+				<h1>Menu</h1>
+			</div>
+
+			<div class="side-nav-content">
+				<!-- Search By Type Form -->
+				<form class="searchForm">
+					<input class="searchBox typeTxt" type="text" placeholder="Search by Type:" name="search"/>
+					<button class="searchBtn typeBtn"><i class='fa fa-search fa-2x' aria-hidden='true'></i></button>
+				</form>
+
+				<div class="searchResponseWrapper">
+					<ul class="typeResponse"></ul>
+				</div>
+
+				<!-- Search By Region Form -->
+				<form class="searchForm regionSearch">
+					<input class="searchBox regionTxt" type="text" placeholder="Search by Region:" name="search"/>
+					<button class="searchBtn regionBtn"><i class='fa fa-search fa-2x' aria-hidden='true'></i></button>
+				</form>
+			</div>
+
+			<div class="side-nav-footer">
+				<p>View API <a href="/poi/php_api/">Here</a></p>
+			</div>
+
+			<div class="nav-toggle"><i class='fa fa-bars fa-2x' aria-hidden='true'></i></div>
+		</div><!-- END OF NAV -->
+
+		<!-- ================== BODY ================== -->
+		<div class="content">
+			<main>
+			  <header>
+			    <h1>Points of Interest</h1>
+			  </header>
+			  <div id="LefletMap"></div>
+			</main>
+
+			<!-- Hidden JQuery Dialog -->
+			<div class="addPoi" title="Add a Point of Interest" style="display:none;">
+				<h3>Please Enter New Details For POI</h3>
+				<p>Validated With REGEX - /^[A-Za-z0-9\s]+$/</p>
+				<p>Name: <input type="text" class="add_name" /></p>
+				<p>Type: <input type="text" class="add_type" /></p>
+				<p>Country: <input type="text" class="add_country" /></p>
+				<p>Region: <input type="text" class="add_region" /></p>
+				<p>Description: <textarea class="add_description"></textarea></p>
+				<p>Points Of Interest Username <input type="text" class="username" /></p>
+				<p>Points Of Interest Password <input type="password" class="password" name="password" /></p>
+				<input type="hidden" class="add_lat">
+				<input type="hidden" class="add_lon">
+			</div>
+
+			<!-- Hidden JQuery Dialog -->
+			<div class="reviewPoi" title="Review a Point of Interest" style="display:none;">
+				<h3>Please Enter New Details For POI</h3>
+				<p>Review: <textarea class="add_review"></textarea></p>
+				<input type="hidden" class="poiId">
+			</div>
+		</div><!-- END OF BODY -->
+
+		<!-- ================== JAVASCRIPT ================== -->
+		<!-- Leflet JS Include -->
+		<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+
+		<!-- JQuery JS & UI Includes -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+		<!-- JS Objects-->
+		<script src="js/PointsOfInterestApp.js"></script>
+		<script src="js/Map.js"></script>
+		<script src="js/AddPoiDialog.js"></script>
+
+		<!-- Main JS File Include -->
+		<script src="js/main.js"></script>
+	</body>
+</html>

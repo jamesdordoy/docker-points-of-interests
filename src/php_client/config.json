@@ -1,0 +1,13 @@
+{
+    "local": {
+        "routes": {
+            "GET_points_of_interest": "http://localhost:8888/poi/php_api/PointOfInterest.php",
+            "POST_point_of_interest_review": "http://localhost:8888/poi/php_api/PointOfInterestReview.php"
+        }
+    },
+    "production": {
+        "routes": {
+            "GET_points_of_interest": "http://localhost:8888/poi/php_api/PointOfInterest.php"
+        }
+    }
+}

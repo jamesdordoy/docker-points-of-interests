@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
+@import url('fade-animation.css');
+@import url('slide-in-nav.css');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #36454f;
+}
+
+.leaflet-marker-icon{
+  z-index: 9999;
+}
+
+main{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+header{
+  flex: 0 1 auto;
+  text-align:right;
+  padding:0 20px;
+  color:#fff;
+  background:#8f8d8e;
+  z-index: 9998;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, .3);
+  -webkit-animation: showHead 1s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: showHead 1s forwards; /* Firefox < 16 */
+  -ms-animation: showHead 1s forwards; /* Internet Explorer */
+  -o-animation: showHead 1s forwards; /* Opera < 12.1 */
+  animation: showHead 1s forwards;
+  animation-delay: 2s;
+}
+
+header h1{
+  font-family: 'Work Sans', sans-serif;
+  position: absolute;
+  top: 0;
+  right: -500px;
+  z-index: 10000;
+  -webkit-animation: slideRight 2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: slideRight 2s forwards; /* Firefox < 16 */
+  -ms-animation: slideRight 2s forwards; /* Internet Explorer */
+  -o-animation: slideRight 2s forwards; /* Opera < 12.1 */
+  animation: slideRight 2s forwards;
+  animation-delay: 3s;
+}
+
+.side-nav input{
+	width:95%;
+	margin:10px 2%;
+	padding:5px;
+	height:45px;
+	border-radius:5px;
+	font-size:1.5em;
+}
+
+.searchResponseWrapper{
+  overflow: hidden;
+}
+
+.typeResponse{
+  height: 200px;
+  padding: 0;
+	margin:0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* Hide Scroll Bar */
+.typeResponse::-webkit-scrollbar {
+  display: none;
+}
+
+.side-nav .typeResponse li{
+	width:100%;
+	padding:10px;
+	margin:0;
+  margin-bottom:10px;
+	display:block;
+	list-style:none;
+	background:#8f8d8e;
+	border-radius:5px;
+	color:#000;
+	box-sizing: border-box;
+  cursor:pointer;
+  color:#fff;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, .3);
+  position: relative;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadein 2s; /* Firefox < 16 */
+	-ms-animation: fadein 2s; /* Internet Explorer */
+	-o-animation: fadein 2s; /* Opera < 12.1 */
+	animation: fadein 2s;
+}
+
+.typeResponse li:hover > .fa-map-marker{
+	-webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+	color:#93BD93;
+}
+
+.fa-map-marker{
+	position: absolute;
+	top: 30px;
+	right: 10px;
+}
+
+.side-nav .typeResponse li p{
+	margin:0;
+}
+
+
+.searchForm{
+	display:flex;
+	padding:0;
+}
+
+.searchBtn{
+	margin:10px 0;
+	padding:5px;
+	border-radius:5px;
+	font-size:1em;
+  background: #93BD93;
+  color:#fff;
+  cursor: pointer;
+}
+
+.searchBox{
+	margin:0;
+
+  /* Flexbox Overflow Fix*/
+  min-width: 0;
+}
+
+.ui-widget-content{
+	background: #ccc;
+	text-align: right;
+}
+
+.addPoi{
+	background: #000;
+  color:#fff;
+}
+
+.content{ height:100%; }
+
+#LefletMap{
+   flex: 1 1 auto;
+   min-height: 50px;
+}
+
+.dialog{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 20px 40px;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+}
+
+.close{
+  position: absolute;
+  top:10px;
+  left:10px;
+  background: #93BD93;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dialog form{
+  display: flex;
+   flex-flow: column;
+}
+
+.dialog input{
+  display: flex;
+  margin-top:10px;
+  padding:10px;
+  border-radius: 5px;
+}
+
+.dialog h2{
+font-family: 'Work Sans', sans-serif;
+}
+
+.dialog textarea{
+  width:100%;
+  margin-top:10px;
+}
+
+.dialog span{
+  color:#fff;
+  font-size: 1.2em;
+ font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+}
+
+.go{
+  margin-top:10px;
+  background: #93BD93;
+  color: #fff;
+  padding:10px;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.dialog p{
+  color:#fff;
+  font-size: 1.2em;
+ font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+ padding:0;
+
+ margin:0;
+}
+
+/* Animations */
+@-webkit-keyframes showHead {
+    100% { height: 80px; }
+}
+
+@keyframes showHead {
+    100% { height: 80px; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes showHead {
+    100% { height: 80px; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes showHead {
+    100% { height: 80px; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes showHead {
+    100% { height: 80px; }
+}
+
+@-webkit-keyframes slideRight {
+  100% { transform: translateX(520px); }
+}
+
+@keyframes slideRight {
+  100% { transform: translateX(-520px); }
+} 
+
+/* Firefox < 16 */
+@-moz-keyframes slideRight {
+    100% { transform: translateX(-520px); }
+}
+
+/* Internet Explorer */
+@-ms-keyframes slideRight {
+    100% { transform: translateX(-520px); }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes slideRight {
+    100% { transform: translateX(-520px); }
+}

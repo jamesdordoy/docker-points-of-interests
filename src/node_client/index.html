@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Directive / Controller -->
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<!-- Page Title (Shown In Browser) -->
+		<title>M.E.A.N. Points of Interest</title>
+
+		<!-- Leflet CSS CDN Include -->
+		<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+
+		<!-- JQuery UI CSS Smoothness Include -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+		<!-- Main CSS File Include -->
+		<link rel="stylesheet" href="css/main.css" />
+
+		<!-- FONTAWESOME INCLUDE -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!-- Leaflet CDN Javascript -->
+		<script type="text/javascript" src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+		<!-- ANGULAR JS GOOGLE CDN INC -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+		<!-- JavaScript Custom Dialog Object -->
+		<script src="js/dialog.js"></script>
+
+		<!-- JavaScript Map Object -->
+		<script src="js/map.js"></script>
+
+		<!-- Angular JS Files -->
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+
+		<!-- A Simple Side Menu Toggle -->
+		<script src="js/menu.js"></script>
+	</head>
+	<body>
+		<!-- ================== HIDDEN-SIDE-NAV ================== -->
+		<div class="side-nav">
+			<div class="side-nav-header"> 
+				<h1>Menu</h1> 
+			</div>
+			<div class="side-nav-content">
+				<!-- *** ANGULAR *** -->
+				<!-- Search By Type Form & Response Div -->
+				<div class="SearchByType" ng-include="'partials/searchByType.html'"></div>
+				<!-- Search By Region Form -->
+				<div class="SearchByRegion" ng-include="'partials/searchByRegion.html'"></div>
+			</div>
+			<div class="side-nav-footer">
+				<p>Powered With AngularJS View Node JS API <a href="../api/">Here</a></p> 
+			</div>
+			<div class="nav-toggle"><i class='fa fa-bars fa-2x' aria-hidden='true'></i></div>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div class="content">
+			<main ng-controller="MainController">
+			<header>
+				<h1>M.E.A.N. Points of Interest</h1>
+			</header>
+			<div id='LefletMap' data-tap-disabled="true"></div>
+			</main>
+		</div>
+
+		<!-- Hidden Custom Dialog (Validated With AngularJS) -->
+		<div class='dialog'>
+			<div class="dailogHeader">
+				<h1>New Point Of Interest</h1><button class="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+			</div>
+			<form name="myForm">
+				<p>* Name:</p><input type="text" class="add_name" name="addName" ng-model="addName" placeholder="Name:" required>
+				<span ng-show="myForm.addName.$touched && myForm.addName.$invalid">Name is required.</span>
+
+				<p>* Type:</p><input type="text" class="add_type" name="addType" ng-model="addType" placeholder="Type:" required>
+				<span ng-show="myForm.addType.$touched && myForm.addType.$invalid">Type is required.</span>
+
+				<p>* Country:</p><input type="text" class="add_country" name="addCountry" ng-model="addCountry" placeholder="Country:" required>
+				<span ng-show="myForm.addCountry.$touched && myForm.addCountry.$invalid">Country is required.</span>
+
+				<p>* Region:</p><input type="text" class="add_region" name="addRegion" ng-model="addRegion" placeholder="Region:" required>
+				<span ng-show="myForm.addRegion.$touched && myForm.addRegion.$invalid">Region is required.</span>
+
+				<p>* POI Username:</p><input type="text" class="username" name="username" ng-model="username" placeholder="Username" >
+				<span ng-show="myForm.username.$touched && myForm.username.$invalid">Username is required.</span>
+				
+				<p>* POI Password:</p><input type="password" class="password" name="password" ng-model="password" placeholder="Region:" >
+				<span ng-show="myForm.password.$touched && myForm.password.$invalid">Password is required.</span>
+				
+				<input type="hidden" class="lat">
+				<input type="hidden" class="lon">
+
+				<p>* Description:</p><textarea class="add_description" name="addDescription" ng-model="addDescription" placeholder="Description:" rows="5" required></textarea>
+				<span ng-show="myForm.addDescription.$touched && myForm.addDescription.$invalid">Description is required.</span>
+
+				<button class='go'>Submit</button>
+			</form>
+		</div>
+	</body>
+</html>

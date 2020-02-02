@@ -1,0 +1,10 @@
+FROM node:6.11.5    
+
+WORKDIR /usr/src/app
+COPY ./src/node_api/package.json .
+RUN npm install    
+COPY ./src/node_api .
+
+EXPOSE 8011
+
+CMD [ "npm", "start" ]
