@@ -6,6 +6,14 @@
 
 `$ mkdir mysql && mkdir mongo`
 
+## Running the container
+
+`$ docker-compose build && docker-compose up -d`
+
+## Running the container
+
+`$ docker-compose stop`
+
 ## View API & Clients
 
 View Native JS Client: 
