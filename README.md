@@ -21,6 +21,8 @@ View Native JS Client:
 
 View AngularJS Client: [http://localhost:8081/angular_client/](http://localhost:8081/angular_client/)
 
+View PHP Client: [http://localhost:8081/php_client/](http://localhost:8081/php_client/)
+
 Node JS Express API Route: [http://localhost:8011/](http://localhost:8011/)
 
 PHP API Routes:
